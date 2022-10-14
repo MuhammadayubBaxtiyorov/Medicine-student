@@ -1,0 +1,26 @@
+{% extends "dashboard.html" %}
+{% block heading%}Illness{%endblock%}
+{% block sub_heading %} Illness delete {%endblock%}
+{% block content %}
+
+<a href="{% url 'illness_add' %}"> <button class="btn btn-primary mb-5">Add new </button></a>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Illness info
+    </div>
+    <div class="card-body">
+        <p>
+
+            <strong> are you sure to delete "{{ illness.name }}" </strong> <br><br>
+            <form method="POST", action="{% url "illness_delete" illness.id %}"> {% csrf_token %}
+            <button type="submit" class="btn btn-danger"> Yes </button>
+            </form>
+            <br>
+            <button class="btn btn-primary"> No </button>
+
+        </p>
+    </div>
+</div>
+
+{% endblock %}

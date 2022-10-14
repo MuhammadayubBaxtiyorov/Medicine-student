@@ -1,0 +1,51 @@
+{% extends "dashboard.html" %}
+{% block heading%}Medicine menegement{%endblock%}
+{% block sub_heading %} You can add/delete and edit your Medicine {%endblock%}
+{% block content %}
+<div class="card mb-4 p-1">
+  <div class="card-header">
+      <i class="fas fa-chart-area me-1"></i>
+      Adding Medicine
+  </div>
+  <form method="POST" action="{% url 'medicine_add' %}"> {% csrf_token %}
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput">Name</label>
+      <input type="text" name="medicine_name" class="form-control"  placeholder="Enter medicine name">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Description</label>
+      <input type="text" name="medicine_desc" class="form-control"  placeholder="Enter medicine description">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Start date</label>
+      <input type="date" name="start_date" class="form-control"  placeholder="Enter medicine description">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">End date</label>
+      <input type="date" name="end_date" class="form-control"  placeholder="Enter medicine description">
+    </div>
+
+    <div class="form-group mb-2">
+      <label for="illness_select">Select illness</label>
+
+      <select name="illness" id="illness_select"  class="form-control">
+        {% for ill in illness %}
+        <option value="{{ ill.id }}">{{ill.name}}</option>
+        {% endfor %}
+      </select>
+      
+    </div>
+    
+    <div class="form-group m-2">
+    <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+{% endblock %}

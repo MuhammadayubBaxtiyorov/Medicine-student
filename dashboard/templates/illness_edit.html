@@ -1,0 +1,46 @@
+{% extends "dashboard.html" %}
+{% block heading%}Illness edit{%endblock%}
+{% block sub_heading %} Illness {%endblock%}
+{% block content %}
+<div class="card mb-4 p-1">
+  <div class="card-header">
+      <i class="fas fa-chart-area me-1"></i>
+      Edit illness
+  </div>
+  <form method="POST" action="{% url 'illness_edit' illness.id %}"> {% csrf_token %}
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput">Name</label>
+      <input type="text" value="{{illness.name}}" name="illnes_name" class="form-control"  placeholder="Enter illness name">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Description</label>
+      <input type="text" name="illnes_desc" value="{{illness.desc}}" class="form-control"  placeholder="Enter illness description">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Identified date</label>
+<<<<<<< HEAD
+   
+      <input type="date" name="illnes_date" value="{{illness.identified_time|date:'Y/m/d'}}" class="form-control"  placeholder="Enter illness description">
+=======
+      <input type="date" name="illnes_date" value="{{illness.identified_time|date:'Y-m-d'}}" class="form-control"  placeholder="Enter illness description">
+>>>>>>> 22cc12b7c8d955f33449ebd1ded002593ac51f62
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Identified by</label>
+      <input type="text" name="illnes_identified" value="{{illness.identified_by}}" class="form-control"  placeholder="Who identify illness">
+    </div>
+    <div class="form-group m-2">
+    <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+{% endblock %}

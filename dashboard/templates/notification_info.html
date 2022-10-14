@@ -1,0 +1,65 @@
+{% extends "dashboard.html" %}
+{% block heading%}Notification{%endblock%}
+{% block sub_heading %} Full Notification {%endblock%}
+{% block content %}
+
+<a href="{% url 'notification_add' %}"> <button class="btn btn-primary mb-5">Add Notification </button></a>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Notification info
+    </div>
+    <div class="card-body">
+        <p>
+            <h2>For who: {{ db.who }}</h2>
+            <h2>Telegram ID:  {{ db.telegram_id }}</h2>
+            <h2>First Name:  {{ db.first_name }}</h2>
+            <h2>Who: {{ db.who_2 }}</h2>
+            <h2>Telegram ID:  {{ db.telegram_id_2 }}</h2>
+            <h2>First Name:  {{ db.first_name_2 }}</h2>
+        </p>
+    </div>
+</div>
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>For who</th>
+                <th>Telegram ID</th>
+                <th>First Name</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>For who</th>
+                <th>Telegram ID</th>
+                <th>First Name</th>
+                <th>Actions</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for xb in xb %}
+            <tr>
+                 <td>{{ xb.who }}</td> 
+                <td>{{ xb.telegram_id }}</td>
+                <td>{{xb.first_name }}</td>
+
+                <td>  
+                    <a href="{% url 'notification_edit' xb.id %}"> <button class="btn btn-sm btn-info m-1"> Edit </button> </a>
+                    <a href="{% url 'notification_delete' xb.id %}"> <button class="btn btn-sm btn-danger m-1"> Delete </button></a>
+                </td>
+                
+            </tr>
+            {% endfor %}
+           
+            
+            
+            
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "dashboard.html" %}
+{% block heading %}Notifications{% endblock %}
+{% block sub_heading %} Add your Notifications here {% endblock %}
+{% block content %}
+<div class="card mb-4 p-1">
+  <div class="card-header">
+      <i class="fas fa-chart-area me-1"></i>
+      Adding Notifications
+  </div>
+  <form method="POST" action="{% url 'notification_add' %}"> {% csrf_token %}
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput">For who</label>
+      <input type="person" name="person_add" class="form-control"  placeholder="Enter the person">
+    </div>
+
+   
+    <div class="form-group mb-2">
+      <label for="medicine_select">Enter a telgram ID</label>
+      <input type="telegram" name="telegram" class="form-control"  placeholder="Enter an ID">
+    </div>
+
+
+    <div class="form-group mb-2">
+        <label for="medicine_select">Enter first name</label>
+        <input type="first_name" name="first_name" class="form-control"  placeholder="Enter first name">
+      </div>
+
+      <br>
+
+      <div class="form-group m-2">
+        <label for="formGroupExampleInput">For who</label>
+        <input type="person" name="person_add_2" class="form-control"  placeholder="Enter the person">
+      </div>
+  
+     
+      <div class="form-group mb-2">
+        <label for="medicine_select">Enter a telgram ID</label>
+        <input type="telegram" name="telegram_2" class="form-control"  placeholder="Enter an ID">
+      </div>
+  
+  
+      <div class="form-group mb-2">
+          <label for="medicine_select">Enter first name</label>
+          <input type="first_name" name="first_name_2" class="form-control"  placeholder="Enter first name">
+        </div>
+   
+    
+    
+    <div class="form-group m-2">
+    <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+{% endblock %}

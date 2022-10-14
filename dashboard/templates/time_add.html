@@ -1,0 +1,37 @@
+{% extends "dashboard.html" %}
+{% block heading%}Time menegement{%endblock%}
+{% block sub_heading %} You can add/delete and edit your Time {%endblock%}
+{% block content %}
+<div class="card mb-4 p-1">
+  <div class="card-header">
+      <i class="fas fa-chart-area me-1"></i>
+      Adding time
+  </div>
+  <form method="POST" action="{% url 'time_add' %}"> {% csrf_token %}
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput">Alert time</label>
+      <input type="time" name="time_alert" class="form-control"  placeholder="Enter medicine name">
+    </div>
+
+   
+    <div class="form-group mb-2">
+      <label for="medicine_select">Select Medicine</label>
+
+      <select name="medicine_id" id="medicine_select"  class="form-control">
+        {% for med in medicines %}
+        <option value="{{ med.id }}">{{med.name}}</option>
+        {% endfor %}
+      </select>
+      
+    </div>
+    
+    <div class="form-group m-2">
+    <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+{% endblock %}

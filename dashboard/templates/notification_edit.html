@@ -1,0 +1,56 @@
+{% extends "dashboard.html" %}
+{% block heading%}Notification edit{%endblock%}
+{% block sub_heading %} Notification {%endblock%}
+{% block content %}
+<div class="card mb-4 p-1">
+  <div class="card-header">
+      <i class="fas fa-chart-area me-1"></i>
+      Edit Notification
+  </div>
+  <form method="POST" action="{% url 'notification_edit' notification.id %}"> {% csrf_token %}
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput">For who</label>
+      <input type="text" value="{{notification.who}}" name="notification_who" class="form-control"  placeholder="Enter the person">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Telegram ID</label>
+      <input type="text" name="telegram_id" value="{{notification.telegram_id}}" class="form-control"  placeholder="Enter telegram ID">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">First Name</label>
+   
+      <input type="text" name="first_name" value="{{notification.first_name}}" class="form-control"  placeholder="Enter first name">
+    </div>
+
+
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput">Who</label>
+      <input type="text" value="{{notification.who_2}}" name="notification_who_2" class="form-control"  placeholder="Enter the person">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">First Name</label>
+      <input type="text" name="first_name_2" value="{{notification.first_name_2}}" class="form-control"  placeholder="Enter telegram ID">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Telegram id</label>
+   
+      <input type="text" name="telegram_id_2" value="{{notification.telegram_id_2}}" class="form-control"  placeholder="Enter first name">
+    </div>
+    
+    <div class="form-group m-2">
+    <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+{% endblock %}

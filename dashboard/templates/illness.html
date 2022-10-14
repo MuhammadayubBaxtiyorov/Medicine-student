@@ -1,0 +1,58 @@
+{% extends "dashboard.html" %}
+{% block heading%}Illness menegement{%endblock%}
+{% block sub_heading %} You can add/delete and edit your illness {%endblock%}
+{% block content %}
+
+<a href="{% url 'illness_add' %}"> <button class="btn btn-primary mb-5">Add new </button></a>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Medicine list
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Identified date</th>
+                    <th>Identified by</th>
+                    <th>Action </th>
+                    
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                     <th>Name</th> 
+                    <th>Description</th>
+                    <th>Identified date</th>
+                    <th>Identified by</th>
+                    <th>Action </th>
+
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for ilness in illnesses %}
+                <tr>
+                     <td>{{ ilness.name }}</td> 
+                    <td>{{ ilness.desc }}</td>
+                    <td>{{ ilness.identified_time }}</td>
+                    <td>{{ ilness.identified_by }}</td>
+                    <td> <a href="{% url 'illness_info' ilness.id  %}"><button class="btn btn-sm btn-primary m-1"> View </button> </a>
+                        <a href="{% url 'illness_edit' ilness.id %}"> <button class="btn btn-sm btn-info m-1"> Edit </button> </a>
+                        <a href="{% url 'illness_delete' ilness.id %}"> <button class="btn btn-sm btn-danger m-1"> Delete </button></a>
+                    
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+               
+                
+                
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

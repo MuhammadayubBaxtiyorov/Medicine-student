@@ -1,0 +1,72 @@
+{% extends "dashboard.html" %}
+{% block heading%}Illness{%endblock%}
+{% block sub_heading %} Full iness info {%endblock%}
+{% block content %}
+
+<a href="{% url 'illness_add' %}"> <button class="btn btn-primary mb-5">Add new illness </button></a>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Illness info
+    </div>
+    <div class="card-body">
+        <p>
+            <h2>Name: {{ illness.name }}</h2>
+            <h2>Description:  {{ illness.desc }}</h2>
+            <h2>Identified by:  {{ illness.identified_by }}</h2>
+            <h2>Identified date:  {{ illness.identified_time }}</h2>
+        </p>
+    </div>
+</div>
+<div class="card-body">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>Name</th> 
+                <th>Description</th>
+                <th>Illness name</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                 <th>Name</th> 
+                <th>Description</th>
+                <th>Illness name</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Actions</th>
+                
+
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for med in medicine %}
+            <tr>
+                 <td>{{ med.name }}</td> 
+                <td>{{ med.desc }}</td>
+                <td>{{ med.illness.name }}</td>
+                <td>{{ med.start_date }}</td>
+                <td>{{ med.end_date }}</td>
+                
+                <td> <a href="{% url 'illness_info' med.id  %}"><button class="btn btn-sm btn-primary m-1"> View </button> </a>
+                    <a href="{% url 'illness_edit' med.id %}"> <button class="btn btn-sm btn-info m-1"> Edit </button> </a>
+                    <a href="{% url 'illness_delete' med.id %}"> <button class="btn btn-sm btn-danger m-1"> Delete </button></a>
+                
+                </td>
+                
+            </tr>
+            {% endfor %}
+           
+            
+            
+            
+        </tbody>
+    </table>
+    <a href="{% url 'medicine_add' %}"> <button class="btn btn-primary mb-5">Add new medicine </button></a>
+
+</div>
+
+{% endblock %}

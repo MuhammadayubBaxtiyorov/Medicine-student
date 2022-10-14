@@ -1,0 +1,41 @@
+{% extends "dashboard.html" %}
+{% block heading%}Illness menegement{%endblock%}
+{% block sub_heading %} You can add/delete and edit your Illness {%endblock%}
+{% block content %}
+<div class="card mb-4 p-1">
+  <div class="card-header">
+      <i class="fas fa-chart-area me-1"></i>
+      Adding illness
+  </div>
+  <form method="POST" action="{% url 'illness_add' %}"> {% csrf_token %}
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput">Name</label>
+      <input type="text" name="illnes_name" class="form-control"  placeholder="Enter illness name">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Description</label>
+      <input type="text" name="illnes_desc" class="form-control"  placeholder="AEnter illness description">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Identified date</label>
+      <input type="date" name="illnes_date" class="form-control"  placeholder="Enter illness description">
+    </div>
+
+    <div class="form-group m-2">
+      <label for="formGroupExampleInput2">Identified by</label>
+      <input type="text" name="illnes_identified" class="form-control"  placeholder="Who identify illness">
+    </div>
+    <div class="form-group m-2">
+    <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+{% endblock %}

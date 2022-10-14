@@ -1,0 +1,62 @@
+{% extends "dashboard.html" %}
+{% block heading%}Notification menegement{%endblock%}
+{% block sub_heading %} You can add/delete and edit your Notification {%endblock%}
+{% block content %}
+
+<a href="{% url 'notification_add' %}"> <button class="btn btn-primary mb-5">Add new </button></a>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Notification list
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>For who</th>
+                    <th>Telegram ID</th>
+                    <th>First Name</th>
+                    <th>Actions</th>
+                    <th>who</th>
+                    <th>First name</th>
+                    <th>Telegram id </th>
+                    
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>For who</th>
+                    <th>Telegram ID</th>
+                    <th>First Name</th>
+                    <th>Actions</th>
+                    <th>who</th>
+                    <th>First name</th>
+                    <th>Telegram id </th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for db in db %}
+                <tr>
+                    <td>{{ db.who }}</td> 
+                    <td>{{ db.telegram_id }}</td>
+                    <td>{{ db.first_name }}</td>
+
+    
+                    <td> <a href="{% url 'notification_info' db.id  %}"><button class="btn btn-sm btn-primary m-1"> View </button> </a>
+                        <a href="{% url 'notification_edit' db.id %}"> <button class="btn btn-sm btn-info m-1"> Edit </button> </a>
+                        <a href="{% url 'notification_delete' db.id %}"> <button class="btn btn-sm btn-danger m-1"> Delete </button></a>
+                </tr>
+
+                <td>{{ db.who_2 }}</td> 
+                <td>{{ db.telegram_id_2 }}</td>
+                <td>{{ db.first_name_2 }}</td>
+
+
+                {% endfor %}
+            </tfoot>
+
+        </table>
+    </div>
+</div>
+
+{% endblock %}
